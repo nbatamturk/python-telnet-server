@@ -2,24 +2,23 @@
 Python telnet server
 
 Kurulum:
-1) Dosyaları linux sisteme kopyalayın
-2) Kopyalanan dizinde root yetkisinde terminal açın
-3) "chmod 777 telnetStart.py && chmod 777 telnet.py" komutunu çalıştırıp dosyalara tam yetki verin
-4) "python startTelnet.py&" komutuyla yazılımı arka planda çalıştırın
-5) Client tarafında (örn: Teraterm) ile Service: Other TCP Port 23 olacak şekilde cihaz ipsi üzerinden bağlantı kurun
-6) Teraterm Setup -> Terminal sekmesinden Local Echo kısmını aktif edin
-7) Kurulum sonrasında sadece 4.adım kullanılarak daha sonraki kullanımlarda uygulama başlatılabilir
+
+1) "cd /x" ile usb bellek dizinini açın
+2) root yetkisinde terminal açın
+3) "mount -o remount,rw /usr" komutuyla yazma yetkisi verelim
+4) "mkdir /usr/telnet" komutuyla telnet için dizin oluşturalım
+5) "cp startTelnet.py /usr/telnet/ && cp telnet.py /usr/telnet/" komutu ile telnet dosyalarını linux sisteme kopyalayın
+6) "chmod 777 /usr/telnet/telnetStart.py && chmod 777 /usr/telnet/telnet.py" komutunu çalıştırıp dosyalara tam yetki verin
+7) "cp telnet.service /etc/systemd/system/" ile service dosyasını kopyalayın
+8) "systemctl daemon-reload" komutu ile servis dosyalarını güncelleyelim
+9) "systemctl start telnetserver.service" komutu ile telnet servisini başlatalım
+10) "systemctl enable telnetserver.service" komutu ile telnet servisini aktif edelim
+11) "systemctl status telnetserver.service" komutu ile telnet servisinin durumu kontrol edelim (Active Running gözükmeli)
+12) Client tarafında (örn: Teraterm) ile Service: Other TCP Port 23 olacak şekilde cihaz ipsi üzerinden bağlantı kurun
 
 
 
 
-mount -o remount,rw /usr
-mkdir /usr/telnet
-vi /etc/systemd/system/telnetserver.service
-systemctl daemon-reload
-systemctl start telnetserver.service
-systemctl enable telnetserver.service
-systemctl status telnetserver.service
 
 
 Uygulamayı sonlandırmak için
