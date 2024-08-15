@@ -10,6 +10,18 @@ Kurulum:
 6) Teraterm Setup -> Terminal sekmesinden Local Echo kısmını aktif edin
 7) Kurulum sonrasında sadece 4.adım kullanılarak daha sonraki kullanımlarda uygulama başlatılabilir
 
+
+
+
+mount -o remount,rw /usr
+mkdir /usr/telnet
+vi /etc/systemd/system/telnetserver.service
+systemctl daemon-reload
+systemctl start telnetserver.service
+systemctl enable telnetserver.service
+systemctl status telnetserver.service
+
+
 Uygulamayı sonlandırmak için
 1) Root yetkisine sahip terminal de jobs yazın ve çalışan işleri listeleyin
 2) Listeden "./telnetStart.py &" yazılımının id numarasını öğrenin (örn:1)
