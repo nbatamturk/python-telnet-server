@@ -2,10 +2,9 @@
 Python telnet server
 
 Kurulum:
-
-1) "cd /x" ile usb bellek dizinini açın
-2) root yetkisinde terminal açın
-3) "mount -o remount,rw /usr" komutuyla yazma yetkisi verelim
+1) "sudo su" komutuyla root yetkisinde terminal açın 
+2) "cd /x" ile usb bellek dizinini açın
+3) "mount -o remount,rw /usr" komutuyla dizine yazma yetkisi verelim
 4) "mkdir /usr/telnet" komutuyla telnet için dizin oluşturalım
 5) "cp startTelnet.py /usr/telnet/ && cp telnet.py /usr/telnet/" komutu ile telnet dosyalarını linux sisteme kopyalayın
 6) "chmod 777 /usr/telnet/telnetStart.py && chmod 777 /usr/telnet/telnet.py" komutunu çalıştırıp dosyalara tam yetki verin
@@ -17,14 +16,10 @@ Kurulum:
 12) Client tarafında (örn: Teraterm) ile Service: Other TCP Port 23 olacak şekilde cihaz ipsi üzerinden bağlantı kurun
 
 
-
-
-
-
 Uygulamayı sonlandırmak için
-1) Root yetkisine sahip terminal de jobs yazın ve çalışan işleri listeleyin
-2) Listeden "./telnetStart.py &" yazılımının id numarasını öğrenin (örn:1)
-3) terminal ekranında "kill %1" şeklinde uygulamayı sonlandırın (1 yazan kısıma öğrendiğiniz id numarasını yazacaksınız)
+1) "sudo su" komutuyla root yetkisinde terminal açın 
+2) "systemctl stop telnetserver.service" komutuyla oluşturduğumuz telnet servisini durdurun
+3) "systemctl disable telnetserver.service" komutu ile telnet servisini pasif edelim
 4) Uygulama bu yöntemle kapatıldığında port hemen kapanmayabilir , uygulamayı tekrar açmak istediğinizde port kullanımda hatası alabilirsiniz , bir süre bekleyip tekrar uygulamayı başlatabilirsiniz
 
-Not: python 3.5 üzeri kullanılması tavsiye edilir.
+Not: python 3.5 üzeri kullanılmalıdır
