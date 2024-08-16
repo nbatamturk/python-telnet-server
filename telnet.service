@@ -1,0 +1,13 @@
+[Unit]
+Description=Telnet Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3.5 -u /usr/telnet/startTelnet.py
+WorkingDirectory=/usr/telnet
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
